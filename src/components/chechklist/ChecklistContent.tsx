@@ -1,79 +1,85 @@
-// ChecklistContent.tsx
+// import React from 'react'
+// import ChecklistItem from "./ChecklistItem";
 
-import React, { useState, useEffect } from 'react';
-import ChecklistItem from './ChecklistItem';
+// interface Props {
+//   title?: string;
+//   check: boolean;
+//   vocabulary: {
+//     word: string;
+//     lang: string;
+//     locked: boolean;
+//   }[];
+//   onClick: (index: number, lang: string, locked: boolean) => void;
+//   onLock: (index: number, lang: string, locked: boolean) => void;
+// }
 
-interface Word {
-  lang: string;
-  word: string;
+// const ChecklistContent: React.FC<Props> = ({  vocabulary, onClick, check,onLock }) => {
+//     return (
+//       <div>
+//         {/* <h2>{title}</h2> */}
+//         {vocabulary.map((word, index) => (
+//           <ChecklistItem
+//             key={index}
+//             word={word}
+//             checked={check}
+//             onClick={() => onClick(index, word.lang, word.locked )}
+//             onLock={() => onLock(index,word.lang, word.locked )}
+//           />
+//         ))}
+//       </div>
+//     );
+// }
+
+// export default ChecklistContent
+// Inside VocabularyList.tsx
+
+import React from "react";
+import ChecklistItem from "./ChecklistItem";
+// import { FiClock } from "react-icons/fi";
+
+interface Props {
+  check: boolean;
+  vocabulary: {
+    word: string;
+    lang: string;
+    locked: boolean;
+    timestamp: number;
+  }[];
+  onClick: (index: number, lang: string, locked: boolean) => void;
+  onLock: (index: number, lang: string, locked: boolean) => void;
 }
 
-interface ChecklistContentProps {
-  words: Word[];
-  selectedWord: string | null; // Added for compatibility
-  onItemClick: (word: string) => void;
-}
-
-const ChecklistContent: React.FC<ChecklistContentProps> = ({ words, selectedWord, onItemClick }) => {
-  const [selectedWords, setSelectedWords] = useState<{ [key: string]: number }>({});
-
-  useEffect(() => {
-    const timeoutId = setInterval(() => {
-      const currentTime = new Date().getTime();
-      const newSelectedWords: { [key: string]: number } = {};
-
-      for (const word in selectedWords) {
-        const timePressed = selectedWords[word];
-        if ((currentTime - timePressed) <= 5000) {
-          newSelectedWords[word] = timePressed;
-        }
-      }
-
-      setSelectedWords(newSelectedWords);
-    }, 1000); // Run every second
-
-    return () => clearInterval(timeoutId);
-  }, [selectedWords]);
-
-  const handleClick = (word: string) => {
-    setSelectedWords(prevSelectedWords => ({
-      ...prevSelectedWords,
-      [word]: new Date().getTime(),
-    }));
-  };
+const ChecklistContent: React.FC<Props> = ({
+  vocabulary,
+  onClick,
+  check,
+  onLock,
+}) => {
+  // const calculateRemainingTime = (timestamp: number) => {
+  //   const currentTime = Date.now();
+  //   const elapsedTime = currentTime - timestamp;
+  //   const remainingTime = Math.max(0, 5000 - elapsedTime); // Limit to 0 if exceeded 5 seconds
+  //   return Math.ceil(remainingTime / 1000); // Convert milliseconds to seconds and round up
+  // };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-around' }}>
-      {/* Vocabulary column */}
-      <div>
-        {words.map((word, index) => {
-          if (!selectedWords[word.word]) {
-            return (
-              <ChecklistItem
-                key={index}
-                text={word.word}
-                onClick={() => handleClick(word.word)}
-                isSelected={false}
-              />
-            );
-          }
-          return null;
-        })}
-      </div>
-      {/* Thai Language column */}
-      <div>
-        {Object.keys(selectedWords).map((selectedWord, index) => {
-          const thaiWord = words.find(word => word.word === selectedWord && word.lang === 'TH');
-          return thaiWord ? <ChecklistItem key={index} text={thaiWord.word} isSelected={false} onClick={() => handleClick(thaiWord.word)} /> : null;
-        })}
-      </div>
-      {/* English Language column */}
-      <div>
-        {Object.keys(selectedWords).map((selectedWord, index) => {
-          const englishWord = words.find(word => word.word === selectedWord && word.lang === 'EN');
-          return englishWord ? <ChecklistItem key={index} text={englishWord.word} isSelected={false} onClick={() => handleClick(englishWord.word)} /> : null;
-        })}
-      </div>
+    <div>
+      {vocabulary.map((word, index) => (
+        <div key={index} className="word-container" >
+          {/* style={{display:'flex'}} */}
+          <ChecklistItem  
+            word={word}
+            onClick={() => onClick(index, word.lang, word.locked)}
+            onLock={() => onLock(index, word.lang, word.locked)}
+            checked={check}
+          />
+          {/* {word.timestamp > 0 && !word.locked && ( // Show countdown timer only if word is not locked
+            <div className="timer-icon">
+              <FiClock /> {calculateRemainingTime(word.timestamp)}
+            </div>
+          )} */}
+        </div>
+      ))}
     </div>
   );
 };

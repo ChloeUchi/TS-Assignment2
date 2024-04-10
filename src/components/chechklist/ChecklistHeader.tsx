@@ -3,11 +3,13 @@
 import React from 'react';
 const ChecklistHeader: React.FC = () => {
   return (
-    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-      <h2>คำศัพย์</h2>
-      <h2>ภาษาไทย</h2>
-      <h2>ภาษาอังกฤษ</h2>
+    <>
+    <div className='flex-container'>
+      <div className='div-style'>คำศัพท์</div>
+      <div className='div-style'>ภาษาไทย</div>
+      <div className='div-style'>ภาษาอังกฤษ</div>
     </div>
+    </>
   );
 };
 

@@ -2,10 +2,10 @@
 
 import React from 'react';
 import Checklist from '@components/chechklist/Checklist';
-import wordData from '@function/word.json';
+// import wordData from '@function/word.json';
 
 const WordList: React.FC = () => {
-  return <Checklist words={wordData} />;
+  return <Checklist />;
 };
 
 export default WordList;

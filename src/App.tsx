@@ -4,7 +4,8 @@
 // import WordList from '@components/workdlist/Wordlist'
 // import ChecklistHeader from '@components/chechklist/ChecklistHeader'
 import Checklist from '@components/chechklist/Checklist'
-import wordData from './function/word.json'
+import "tailwindcss/tailwind.css"
+// import wordData from './function/word.json'
 import './App.css'
 
 function App() {
@@ -12,9 +13,8 @@ function App() {
 
   return (
     <>
-      {/* <ChecklistHeader />
-      <WordList /> */}
-      <Checklist words={wordData} />
+      <div><Checklist /></div>
+      
     </>
   )
 }
