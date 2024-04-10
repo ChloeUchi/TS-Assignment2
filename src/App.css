@@ -20,38 +20,38 @@
 }
 
 .flex-container>div {
-    background-color: #f1f1f1;
+    background-color: #f0f2ff;
     color: black;
-    width: 350px;
+    width: 370px;
     margin: 1em;
     text-align: center;
     line-height: 75px;
     font-size: 15px;
-    border: 1px;
-    border-color: #f1f1f1;
+    border-color: 4px solid;
+    /* border-color: #f1f1f1; */
     border-radius: 2em;
 }
 
 .flex-container .div-style {
     background-color: rgb(227, 230, 255);
-    border: 1em;
-    width: 340px;
+    width: 360px;
     color: #3c395f;
     border-radius: 1.2em;
-    border-color: rgb(105, 105, 105);
-    margin: 0.9em;
+    border-color: 4px solid;
+    /* border-color: rgb(105, 105, 105); */
+    /* margin-left: 1em; */
     font-size: 1.3em;
 }
 
-.word-button {
+
+/* .word-button {
     width: 300px;
     height: 70px;
     text-align: center;
     background-color: rgb(234, 235, 255);
-    border: 1em;
     color: #05003a;
     border-radius: 0.7em;
-    border-color: rgb(105, 105, 105);
+    border: 2px solid;
     margin: 1em;
     box-shadow: 4px 3px 3px rgba(162, 159, 198, 0.655);
     font-size: 1.2em;
@@ -60,5 +60,24 @@
 .word-button:hover {
     background-color: #54517e;
     color: rgb(232, 233, 255);
+    box-shadow: 4px 3px 3px rgba(182, 176, 245, 0.655);
+} */
+
+.word-button {
+    width: 300px;
+    height: 70px;
+    text-align: center;
+    background-color: #6b65a4;
+    color: rgb(234, 235, 255);
+    border-radius: 0.7em;
+    border: 2px solid;
+    margin: 1em;
+    box-shadow: 4px 3px 3px rgba(162, 159, 198, 0.655);
+    font-size: 1.2em;
+}
+
+.word-button:hover {
+    background-color: rgb(232, 233, 255);
+    color: #54517e;
     box-shadow: 4px 3px 3px rgba(182, 176, 245, 0.655);
 }
