@@ -20,7 +20,7 @@
 }
 
 .flex-container>div {
-    background-color: #f0f2ff;
+    background-color: #f4efff;
     color: black;
     width: 370px;
     margin: 1em;
@@ -72,12 +72,12 @@
     border-radius: 0.7em;
     border: 2px solid;
     margin: 1em;
-    box-shadow: 4px 3px 3px rgba(162, 159, 198, 0.655);
+    box-shadow: 5px 4px 4px rgba(162, 159, 198, 0.655);
     font-size: 1.2em;
 }
 
 .word-button:hover {
     background-color: rgb(232, 233, 255);
     color: #54517e;
-    box-shadow: 4px 3px 3px rgba(182, 176, 245, 0.655);
+    box-shadow: 5px 4px 4px rgba(182, 176, 245, 0.655);
 }

@@ -169,7 +169,7 @@ setEngWord((prevEngWord) =>
     <>
       <ChecklistHeader />
       <div className="flex-container">
-        <div className="shadow-xl border-4 border-[#54517e]">
+        <div className="shadow-xl border-4 border-[#54517e] h-[72em]">
           <ChecklistContent
             check={false}
             vocabulary={word}
@@ -177,7 +177,7 @@ setEngWord((prevEngWord) =>
             onLock={handleLockWord}
           />
         </div>
-        <div className="shadow-xl border-4 border-[#54517e]">
+        <div className="shadow-xl border-4 border-[#54517e] h-[72em]">
           <ChecklistContent
             check={true}
             vocabulary={thaiWord}
@@ -185,7 +185,7 @@ setEngWord((prevEngWord) =>
             onLock={handleLockWord}
           />
         </div>
-        <div className="shadow-xl border-4 border-[#54517e]">
+        <div className="shadow-xl border-4 border-[#54517e] h-[72em]">
           <ChecklistContent
             check={true}
             vocabulary={engWord}
