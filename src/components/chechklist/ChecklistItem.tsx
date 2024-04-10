@@ -20,9 +20,9 @@ const ChecklistItem: React.FC<Props> = ({ word, onClick, checked, onLock }) => {
     }
   };
 
-  const handleLock = () => {
-    onLock();
-  };
+  // const handleLock = () => {
+  //   onLock();
+  // };
 
     const calculateRemainingTime = (timestamp: number) => {
       const currentTime = Date.now();
@@ -31,14 +31,20 @@ const ChecklistItem: React.FC<Props> = ({ word, onClick, checked, onLock }) => {
       return Math.ceil(remainingTime / 1000); // Convert milliseconds to seconds and round up
     };
     
+
+    const handleLock = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+      e.stopPropagation();
+      onLock();
+    };
+      
   return (
     <>
       {checked ? 
       (
         <div>
-          <div className="word-button flex justify-between border-2 border-[#d4d1f5] hover:border-[#9597c1]">
+          <div onClick={handleClick} className="word-button flex justify-between border-2 border-[#d4d1f5] hover:border-[#9597c1]">
             <div className="flex justify-between">
-            <button onClick={handleClick} className="pl-[7em]">{word.word} </button>
+            <span  className="pl-[7em]">{word.word} </span>
             {word.locked ? (
               <button onClick={handleLock} className="ml-[1em] mr-[2em]" ><CiLock /></button>
               // <i onClick={handleLock}><CiLock /></i>
