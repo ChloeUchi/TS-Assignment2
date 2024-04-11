@@ -1,6 +1,7 @@
 import React from "react";
 import { CiLock, CiUnlock } from "react-icons/ci";
 import { ChecklistItemProps } from '@components/types/ChecklistType'
+import { motion } from "framer-motion";
 
 
 const ChecklistItem: React.FC<ChecklistItemProps> = ({ word, onClick, checked, onLock }) => {
@@ -27,6 +28,12 @@ const ChecklistItem: React.FC<ChecklistItemProps> = ({ word, onClick, checked, o
     <>
       {checked ? 
       (
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.8, opacity: 0 }}
+          transition={{ type: 'spring' }}
+        >
         <div>
           <div onClick={handleClick} className="word-button flex justify-between border-2 border-[#d4d1f5] hover:border-[#9597c1]">
             <div className="flex justify-center ml-[40%]">
@@ -47,6 +54,7 @@ const ChecklistItem: React.FC<ChecklistItemProps> = ({ word, onClick, checked, o
           </div>
           
         </div>
+        </motion.div>
       ) : (
         <div>
           <button className="word-button" onClick={handleClick}>{word.word}</button>

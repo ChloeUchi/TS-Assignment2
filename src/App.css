@@ -78,8 +78,8 @@
     border-radius: 0.7em;
     border: 2px solid;
     margin: 1em;
-    box-shadow: 5px 4px 4px rgba(162, 159, 198, 0.655);
-    font-size: 1.2em;
+    box-shadow: 7px 7px 4px rgba(162, 159, 198, 0.655);
+    font-size: 1.3em;
 }
 
 .word-button:hover {
