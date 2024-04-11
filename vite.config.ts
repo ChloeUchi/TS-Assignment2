@@ -9,7 +9,8 @@ export default defineConfig({
     alias: {
       "@components": path.resolve(__dirname,"src/components"),
       "@assets": path.resolve(__dirname,"src/assets"),
-      "@function": path.resolve(__dirname,"src/function")
+      "@function": path.resolve(__dirname,"src/function"),
+      "@types": path.resolve(__dirname,"src/types")
 
     },
     extensions: ['.ts','.tsx']

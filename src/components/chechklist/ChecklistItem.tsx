@@ -1,28 +1,14 @@
 import React from "react";
 import { CiLock, CiUnlock } from "react-icons/ci";
-// import { FiClock } from "react-icons/fi";
+import { ChecklistItemProps } from '@components/types/ChecklistType'
 
-interface Props {
-  checked: boolean;
-  word: {
-    timestamp: number;
-    word: string;
-    locked?: boolean;
-  };
-  onClick: () => void;
-  onLock: () => void;
-}
 
-const ChecklistItem: React.FC<Props> = ({ word, onClick, checked, onLock }) => {
+const ChecklistItem: React.FC<ChecklistItemProps> = ({ word, onClick, checked, onLock }) => {
   const handleClick = () => {
     if (!word.locked) {
       onClick();
     }
   };
-
-  // const handleLock = () => {
-  //   onLock();
-  // };
 
     const calculateRemainingTime = (timestamp: number) => {
       const currentTime = Date.now();
@@ -32,7 +18,7 @@ const ChecklistItem: React.FC<Props> = ({ word, onClick, checked, onLock }) => {
     };
     
 
-    const handleLock = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    const handleLock = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       e.stopPropagation();
       onLock();
     };
@@ -43,20 +29,17 @@ const ChecklistItem: React.FC<Props> = ({ word, onClick, checked, onLock }) => {
       (
         <div>
           <div onClick={handleClick} className="word-button flex justify-between border-2 border-[#d4d1f5] hover:border-[#9597c1]">
-            <div className="flex justify-between">
-            <span  className="pl-[7em]">{word.word} </span>
+            <div className="flex justify-center ml-[40%]">
+            <span  className="">{word.word} </span>
             {word.locked ? (
-              <button onClick={handleLock} className="ml-[1em] mr-[2em]" ><CiLock /></button>
-              // <i onClick={handleLock}><CiLock /></i>
+              <button onClick={handleLock} className="ml-[20%]" ><CiLock /></button>
             ) : (
-              <button onClick={handleLock} className="ml-[1em] mr-[2em]"><CiUnlock /></button>
-              // <i onClick={handleLock}><CiUnlock /></i>
+              <button onClick={handleLock} className="ml-[20%]"><CiUnlock /></button>
             )}
             </div>
             <div>
             {word.timestamp > 0 && !word.locked && ( // Show countdown timer only if word is not locked
-            <div className="timer-icon  self-center text-sm mt-[1.9em] mr-[1em] text-[#ff4444]">
-              {/* <FiClock />  */}
+            <div className="timer-icon  self-center text-[16px] mr-[1.1em] text-[#ff4444]">
               {calculateRemainingTime(word.timestamp)}
             </div>
           )}

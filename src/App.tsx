@@ -6,6 +6,7 @@
 import Checklist from '@components/chechklist/Checklist'
 import "tailwindcss/tailwind.css"
 // import wordData from './function/word.json'
+import ChecklistHeader from '@components/chechklist/ChecklistHeader'
 import './App.css'
 
 function App() {
@@ -13,7 +14,8 @@ function App() {
 
   return (
     <>
-      <div><Checklist /></div>
+    <ChecklistHeader />
+    <Checklist />
     </>
   )
 }
